@@ -79,6 +79,8 @@ void Error_Handler(void);
 #define ASCII_CR 0x0D
 // DEL = delete
 #define ASCII_DEL 0x7F
+
+#define ARR 1061
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
