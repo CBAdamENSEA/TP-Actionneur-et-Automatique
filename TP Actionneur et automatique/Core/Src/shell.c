@@ -6,6 +6,7 @@
  */
 
 #include "shell.h"
+#include "pwm.h"
 #include "main.h"
 
 extern UART_HandleTypeDef huart2;
@@ -66,6 +67,7 @@ void shell(int * newCmdReady,char cmdBuffer[CMD_BUFFER_SIZE])
 		else if (strncmp(cmdBuffer,"start",strlen("start"))==0)
 		{
 			HAL_UART_Transmit(&huart2, start, sizeof(start), HAL_MAX_DELAY);
+			start_up();
 		}
 		else if (strncmp(cmdBuffer,"stop",strlen("stop"))==0)
 		{

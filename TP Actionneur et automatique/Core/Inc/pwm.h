@@ -11,5 +11,5 @@
 #include <stdio.h>
 
 void start_command(uint8_t alpha);
-
+void start_up();
 #endif /* INC_PWM_H_ */
