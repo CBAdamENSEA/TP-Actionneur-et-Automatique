@@ -10,6 +10,9 @@
 
 #include "main.h"
 
+
+void prompt_display(void);
+void start_display(void);
 /*
  *
  *

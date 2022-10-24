@@ -9,8 +9,14 @@
 #include "main.h"
 
 extern UART_HandleTypeDef huart2;
-extern uint8_t *prompt;
-extern uint8_t *newline;
+uint8_t started[]=
+		"\r\n*-----------------------------*"
+		"\r\n| Welcome on Nucleo-STM32G431 |"
+		"\r\n*-----------------------------*"
+		"\r\n";
+uint8_t prompt[]="user@Nucleo-STM32G431>>";
+
+
 
 uint8_t help[]="Usage:\r\n"
 		"pinout (to show all the connected pins and their functions\r\n"
@@ -31,6 +37,16 @@ uint8_t start[]="Power ON\r\n";
 uint8_t stop[]="Power OFF\r\n";
 uint8_t cmdNotFound[]="Command not found\r\n";
 
+
+
+void prompt_display(void)
+{
+	HAL_UART_Transmit(&huart2, prompt, sizeof(prompt), HAL_MAX_DELAY);
+}
+void start_display(void)
+{
+	HAL_UART_Transmit(&huart2, started, sizeof(started), HAL_MAX_DELAY);
+}
 /*
  *
  *
@@ -39,19 +55,19 @@ void shell(int * newCmdReady,char cmdBuffer[CMD_BUFFER_SIZE])
 {
 	if (*newCmdReady)
 	{
-		if(strcmp(cmdBuffer,"help")==0)
+		if(strncmp(cmdBuffer,"help",strlen("help"))==0)
 		{
 			HAL_UART_Transmit(&huart2, help, sizeof(help), HAL_MAX_DELAY);
 		}
-		else if (strcmp(cmdBuffer,"pinout")==0)
+		else if (strncmp(cmdBuffer,"pinout",strlen("pinout"))==0)
 		{
 			HAL_UART_Transmit(&huart2, pinout, sizeof(pinout), HAL_MAX_DELAY);
 		}
-		else if (strcmp(cmdBuffer,"start")==0)
+		else if (strncmp(cmdBuffer,"start",strlen("start"))==0)
 		{
 			HAL_UART_Transmit(&huart2, start, sizeof(start), HAL_MAX_DELAY);
 		}
-		else if (strcmp(cmdBuffer,"stop")==0)
+		else if (strncmp(cmdBuffer,"stop",strlen("stop"))==0)
 		{
 			HAL_UART_Transmit(&huart2, stop, sizeof(stop), HAL_MAX_DELAY);
 		}
@@ -60,7 +76,7 @@ void shell(int * newCmdReady,char cmdBuffer[CMD_BUFFER_SIZE])
 			HAL_UART_Transmit(&huart2, cmdNotFound, sizeof(cmdNotFound), HAL_MAX_DELAY);
 		}
 
-		HAL_UART_Transmit(&huart2, prompt, sizeof(prompt), HAL_MAX_DELAY);
+		prompt_display();
 		memset(cmdBuffer,NULL,CMD_BUFFER_SIZE*sizeof(char)); // to clear the reception buffer cmdBuffer
 		*newCmdReady = 0; // to wait for another reception
 	}
