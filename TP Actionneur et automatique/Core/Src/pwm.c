@@ -1,9 +1,11 @@
-/*
- * pwm.c
- *
- *  Created on: Oct 24, 2022
- *      Author: Adam CHEIKH BRAHIM and Karim Abdellaziz and Sami Asfary
- */
+/**
+  ******************************************************************************
+  * @file	pwm.c
+  * @authors	Adam Cheikh Brahim, Karim Abdellaziz and Sami Asfary
+  * @brief	Functions that control the motor
+  ******************************************************************************
+  **/
+
 
 #include "pwm.h"
 #include "main.h"
@@ -15,6 +17,13 @@ extern ADC_HandleTypeDef hadc1;
 extern uint8_t alpha_now;
 extern uint8_t alpha_dest;
 
+
+/**
+  * @brief
+  * @param
+  * @param
+  * @retval
+  */
 void start_command(uint8_t alpha)
 {
 
@@ -27,6 +36,12 @@ void start_command(uint8_t alpha)
 	htim1.Instance->CCR2=ARR*(100-alpha)/100;
 }
 
+/**
+  * @brief
+  * @param
+  * @param
+  * @retval
+  */
 void stop_command()
 {
 
@@ -36,6 +51,12 @@ void stop_command()
 	HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2);
 }
 
+/**
+  * @brief
+  * @param
+  * @param
+  * @retval
+  */
 void change_speed(uint8_t alpha)
 {
 
@@ -43,6 +64,13 @@ void change_speed(uint8_t alpha)
 	htim1.Instance->CCR2=ARR*(100-alpha)/100;
 
 }
+
+/**
+  * @brief
+  * @param
+  * @param
+  * @retval
+  */
 void change_speed_progressively(uint8_t alpha)
 {
 	HAL_TIM_Base_Start_IT(&htim6);
@@ -50,13 +78,25 @@ void change_speed_progressively(uint8_t alpha)
 
 }
 
-
+/**
+  * @brief
+  * @param
+  * @param
+  * @retval
+  */
 void start_up()
 {
 	HAL_GPIO_WritePin(ISO_RESET_GPIO_Port, ISO_RESET_Pin, GPIO_PIN_SET);
 	HAL_TIM_Base_Start_IT(&htim7); // Wait for 2.5 us to turn it off
 
 }
+
+/**
+  * @brief
+  * @param
+  * @param
+  * @retval
+  */
 float read_current()
 {
 	float current_v=0.0;

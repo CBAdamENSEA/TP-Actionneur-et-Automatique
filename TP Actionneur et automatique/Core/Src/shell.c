@@ -1,22 +1,27 @@
-/*
- * shell.c
- *
- *  Created on: Oct 24, 2022
- *      Author: Adam CHEIKH BRAHIM and Karim Abdellaziz and Sami Asfary
- */
+/**
+  ******************************************************************************
+  * @file	shell.c
+  * @authors	Adam Cheikh Brahim, Karim Abdellaziz and Sami Asfary
+  * @brief	Commands management
+  ******************************************************************************
+  **/
 
 #include "shell.h"
 #include "pwm.h"
 #include "main.h"
 
-#define MAX_SPEED 99
-#define MIN_SPEED 1
 
 
+#define MAX_SPEED 99 /*  */
+#define MIN_SPEED 1 /*  */
 
 extern uint8_t alpha_now;
 extern uint8_t alpha_dest;
 extern UART_HandleTypeDef huart2;
+
+
+
+
 uint8_t started[]=
 		"\r\n*-----------------------------*"
 		"\r\n| Welcome on Nucleo-STM32G431 |"
@@ -51,18 +56,30 @@ uint8_t first_start=1;
 uint16_t speed_value;
 float current_value;
 
+
+/**
+  * @brief Print the prompt message: "user@Nucleo-STM32G431>>".
+  */
 void prompt_display(void)
 {
 	HAL_UART_Transmit(&huart2, prompt, sizeof(prompt), HAL_MAX_DELAY);
 }
+
+/**
+  * @brief Print the starting message: "Welcome on Nucleo-STM32G431".
+  */
 void start_display(void)
 {
 	HAL_UART_Transmit(&huart2, started, sizeof(started), HAL_MAX_DELAY);
 }
-/*
- *
- *
- */
+
+
+/**
+  * @brief Respond to the command written in the serial terminal.
+  * @note Personalized responses to each command.
+  * @param *newCmdReady	Reception Flag (1 when a command is received).
+  * @param cmdBuffer   Command.
+  */
 void shell(int * newCmdReady,char cmdBuffer[CMD_BUFFER_SIZE])
 {
 	if (*newCmdReady)
@@ -131,3 +148,6 @@ void shell(int * newCmdReady,char cmdBuffer[CMD_BUFFER_SIZE])
 		*newCmdReady = 0; // to wait for another reception
 	}
 }
+/**
+  * @}
+  */
