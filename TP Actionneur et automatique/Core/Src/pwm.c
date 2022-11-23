@@ -10,6 +10,7 @@
 
 extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim7;
+extern TIM_HandleTypeDef htim6;
 extern uint8_t alpha_now;
 extern uint8_t alpha_dest;
 
@@ -37,19 +38,14 @@ void stop_command()
 void change_speed(uint8_t alpha)
 {
 
-	while (alpha_now!=alpha)
-	{
-		if (alpha_now>alpha)
-		{
-			alpha_now--;
-		}
-		else
-		{
-			alpha_now++;
-		}
-		htim1.Instance->CCR1=ARR*alpha_now/100;
-		htim1.Instance->CCR2=ARR*(100-alpha_now)/100;
-	}
+	htim1.Instance->CCR1=ARR*alpha/100;
+	htim1.Instance->CCR2=ARR*(100-alpha)/100;
+
+}
+void change_speed_progressively(uint8_t alpha)
+{
+	HAL_TIM_Base_Start_IT(&htim6);
+	alpha_dest=alpha;
 
 }
 

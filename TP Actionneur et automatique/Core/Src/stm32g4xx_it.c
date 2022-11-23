@@ -1,20 +1,20 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file    stm32g4xx_it.c
-  * @brief   Interrupt Service Routines.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2022 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    stm32g4xx_it.c
+ * @brief   Interrupt Service Routines.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2022 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
@@ -57,6 +57,7 @@ extern uint8_t alpha_dest;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern TIM_HandleTypeDef htim6;
 extern TIM_HandleTypeDef htim7;
 extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
@@ -75,9 +76,9 @@ void NMI_Handler(void)
 
   /* USER CODE END NonMaskableInt_IRQn 0 */
   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
-  while (1)
-  {
-  }
+	while (1)
+	{
+	}
   /* USER CODE END NonMaskableInt_IRQn 1 */
 }
 
@@ -231,6 +232,30 @@ void EXTI15_10_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles TIM6 global interrupt, DAC1 and DAC3 channel underrun error interrupts.
+  */
+void TIM6_DAC_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM6_DAC_IRQn 0 */
+	if(alpha_now!=alpha_dest){
+		if (alpha_now>alpha_dest)
+		{
+			alpha_now--;
+		}
+		else if (alpha_now<alpha_dest)
+		{
+			alpha_now++;
+		}
+		change_speed(alpha_now);
+	}
+  /* USER CODE END TIM6_DAC_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim6);
+  /* USER CODE BEGIN TIM6_DAC_IRQn 1 */
+
+  /* USER CODE END TIM6_DAC_IRQn 1 */
+}
+
+/**
   * @brief This function handles TIM7 global interrupt, DAC2 and DAC4 channel underrun error interrupts.
   */
 void TIM7_DAC_IRQHandler(void)
@@ -242,7 +267,7 @@ void TIM7_DAC_IRQHandler(void)
   /* USER CODE END TIM7_DAC_IRQn 0 */
   HAL_TIM_IRQHandler(&htim7);
   /* USER CODE BEGIN TIM7_DAC_IRQn 1 */
-  HAL_TIM_Base_Stop_IT(&htim7);
+	HAL_TIM_Base_Stop_IT(&htim7);
   /* USER CODE END TIM7_DAC_IRQn 1 */
 }
 

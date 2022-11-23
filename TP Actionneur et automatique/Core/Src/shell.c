@@ -10,6 +10,7 @@
 #include "main.h"
 
 #define MAX_SPEED 99
+#define MIN_SPEED 1
 
 
 
@@ -104,8 +105,11 @@ void shell(int * newCmdReady,char cmdBuffer[CMD_BUFFER_SIZE])
 			{
 				speed_value=MAX_SPEED;
 			}
-			alpha_dest=speed_value;
-			change_speed(alpha_dest);
+			else if (speed_value<MIN_SPEED)
+			{
+				speed_value=MIN_SPEED;
+			}
+			change_speed_progressively(speed_value);
 			sprintf(speed,"Speed is changed to %d\r\n",speed_value);
 			HAL_UART_Transmit(&huart2, speed, sizeof(speed), HAL_MAX_DELAY);
 
