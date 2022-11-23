@@ -12,8 +12,8 @@
 
 
 
-#define MAX_SPEED 99 /*  */
-#define MIN_SPEED 1 /*  */
+#define MAX_SPEED 99 /* Vitesse maximale */
+#define MIN_SPEED 1 /* Vitesse minimale */
 
 extern uint8_t alpha_now;
 extern uint8_t alpha_dest;
