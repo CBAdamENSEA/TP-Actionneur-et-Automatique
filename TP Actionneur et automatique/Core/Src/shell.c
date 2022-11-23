@@ -45,9 +45,11 @@ uint8_t start[]="Power ON\r\n";
 uint8_t stop[]="Power OFF\r\n";
 uint8_t cmdNotFound[]="Command not found\r\n";
 uint8_t speed[50];
+uint8_t current[50];
 uint8_t first_start=1;
 
 uint16_t speed_value;
+float current_value;
 
 void prompt_display(void)
 {
@@ -112,12 +114,12 @@ void shell(int * newCmdReady,char cmdBuffer[CMD_BUFFER_SIZE])
 			change_speed_progressively(speed_value);
 			sprintf(speed,"Speed is changed to %d\r\n",speed_value);
 			HAL_UART_Transmit(&huart2, speed, sizeof(speed), HAL_MAX_DELAY);
-
-
-
-
-
-
+		}
+		else if (strncmp(cmdBuffer,"current",strlen("current"))==0)
+		{
+			current_value=read_current();
+			sprintf(current,"Current value is %f\r\n",current_value);
+			HAL_UART_Transmit(&huart2, current, sizeof(current), HAL_MAX_DELAY);
 		}
 		else
 		{

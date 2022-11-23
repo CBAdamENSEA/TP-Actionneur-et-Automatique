@@ -14,5 +14,6 @@ void start_command(uint8_t alpha);
 void stop_command();
 void change_speed(uint8_t alpha);
 void change_speed_progressively(uint8_t alpha);
+float read_current();
 void start_up();
 #endif /* INC_PWM_H_ */

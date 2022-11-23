@@ -11,6 +11,7 @@
 extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim7;
 extern TIM_HandleTypeDef htim6;
+extern ADC_HandleTypeDef hadc1;
 extern uint8_t alpha_now;
 extern uint8_t alpha_dest;
 
@@ -55,6 +56,16 @@ void start_up()
 	HAL_GPIO_WritePin(ISO_RESET_GPIO_Port, ISO_RESET_Pin, GPIO_PIN_SET);
 	HAL_TIM_Base_Start_IT(&htim7); // Wait for 2.5 us to turn it off
 
+}
+float read_current()
+{
+	float current_v=0.0;
+	uint32_t adc_value;
+	HAL_ADC_Start(&hadc1);
+	HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+	adc_value=HAL_ADC_GetValue(&hadc1);
+	current_v=(((adc_value)/65536.0)*3.3-2.5)*11.9;
+	return current_v;
 }
 
 
