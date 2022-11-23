@@ -10,17 +10,49 @@
 
 extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim7;
+extern uint8_t alpha_now;
+extern uint8_t alpha_dest;
 
 void start_command(uint8_t alpha)
 {
 
-	htim1.Instance->CCR1=ARR*alpha/100;
-	htim1.Instance->CCR2=ARR*(100-alpha)/100;
+
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
 	HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
 	HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
+	htim1.Instance->CCR1=ARR*alpha/100;
+	htim1.Instance->CCR2=ARR*(100-alpha)/100;
 }
+
+void stop_command()
+{
+
+	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
+	HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
+	HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2);
+}
+
+void change_speed(uint8_t alpha)
+{
+
+	while (alpha_now!=alpha)
+	{
+		if (alpha_now>alpha)
+		{
+			alpha_now--;
+		}
+		else
+		{
+			alpha_now++;
+		}
+		htim1.Instance->CCR1=ARR*alpha_now/100;
+		htim1.Instance->CCR2=ARR*(100-alpha_now)/100;
+	}
+
+}
+
 
 void start_up()
 {

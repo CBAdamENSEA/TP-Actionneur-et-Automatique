@@ -53,7 +53,8 @@ uint8_t newline[]="\r\n";
 uint32_t uartRxReceived;
 uint8_t uartRxBuffer[UART_RX_BUFFER_SIZE];
 uint8_t uartTxBuffer[UART_TX_BUFFER_SIZE];
-uint8_t alpha=60;
+uint8_t alpha_now=60;
+uint8_t alpha_dest=60;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -104,7 +105,7 @@ int main(void)
 	memset(cmdBuffer,NULL,CMD_BUFFER_SIZE*sizeof(char));
 	memset(uartRxBuffer,NULL,UART_RX_BUFFER_SIZE*sizeof(char));
 	memset(uartTxBuffer,NULL,UART_TX_BUFFER_SIZE*sizeof(char));
-	start_command(alpha);
+	//start_command(alpha);
 
 	HAL_UART_Receive_IT(&huart2, uartRxBuffer, UART_RX_BUFFER_SIZE);
 	HAL_Delay(10);

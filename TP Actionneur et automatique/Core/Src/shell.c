@@ -9,6 +9,12 @@
 #include "pwm.h"
 #include "main.h"
 
+#define MAX_SPEED 99
+
+
+
+extern uint8_t alpha_now;
+extern uint8_t alpha_dest;
 extern UART_HandleTypeDef huart2;
 uint8_t started[]=
 		"\r\n*-----------------------------*"
@@ -37,8 +43,10 @@ uint8_t pinout[]="Pinout:\r\n"
 uint8_t start[]="Power ON\r\n";
 uint8_t stop[]="Power OFF\r\n";
 uint8_t cmdNotFound[]="Command not found\r\n";
+uint8_t speed[50];
+uint8_t first_start=1;
 
-
+uint16_t speed_value;
 
 void prompt_display(void)
 {
@@ -66,12 +74,46 @@ void shell(int * newCmdReady,char cmdBuffer[CMD_BUFFER_SIZE])
 		}
 		else if (strncmp(cmdBuffer,"start",strlen("start"))==0)
 		{
+
+			if (first_start==1)
+			{
+				start_up();
+				first_start=0;
+			}
+			else
+			{
+				start_command(alpha_dest);
+			}
+
 			HAL_UART_Transmit(&huart2, start, sizeof(start), HAL_MAX_DELAY);
+		}else if (strncmp(cmdBuffer,"restart",strlen("restart"))==0)
+		{
 			start_up();
+			HAL_UART_Transmit(&huart2, start, sizeof(start), HAL_MAX_DELAY);
 		}
 		else if (strncmp(cmdBuffer,"stop",strlen("stop"))==0)
 		{
+			stop_command();
 			HAL_UART_Transmit(&huart2, stop, sizeof(stop), HAL_MAX_DELAY);
+		}
+		else if (strncmp(cmdBuffer,"speed=",strlen("speed="))==0)
+		{
+
+			speed_value=atoi(cmdBuffer+strlen("speed="));
+			if (speed_value>MAX_SPEED)
+			{
+				speed_value=MAX_SPEED;
+			}
+			alpha_dest=speed_value;
+			change_speed(alpha_dest);
+			sprintf(speed,"Speed is changed to %d\r\n",speed_value);
+			HAL_UART_Transmit(&huart2, speed, sizeof(speed), HAL_MAX_DELAY);
+
+
+
+
+
+
 		}
 		else
 		{
