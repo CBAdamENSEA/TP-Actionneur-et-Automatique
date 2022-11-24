@@ -50,6 +50,7 @@
 
 /* USER CODE BEGIN PV */
 extern TIM_HandleTypeDef htim1;
+extern ADC_HandleTypeDef hadc1;
 uint8_t newline[]="\r\n";
 
 uint32_t uartRxReceived;
@@ -57,6 +58,10 @@ uint8_t uartRxBuffer[UART_RX_BUFFER_SIZE];
 uint8_t uartTxBuffer[UART_TX_BUFFER_SIZE];
 uint8_t alpha_now=60;
 uint8_t alpha_dest=60;
+float vitesse_encod=0;
+float current_v=0.0;
+uint32_t adc_value=0;
+float offset_current=2.5268;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -105,11 +110,29 @@ int main(void)
   MX_TIM7_Init();
   MX_TIM6_Init();
   MX_ADC1_Init();
+  MX_TIM2_Init();
+  MX_TIM8_Init();
   /* USER CODE BEGIN 2 */
 	memset(cmdBuffer,NULL,CMD_BUFFER_SIZE*sizeof(char));
 	memset(uartRxBuffer,NULL,UART_RX_BUFFER_SIZE*sizeof(char));
 	memset(uartTxBuffer,NULL,UART_TX_BUFFER_SIZE*sizeof(char));
 	//start_command(alpha);
+	HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
+	int cpt=0;
+	for (cpt=0;cpt<10;cpt++)
+	{
+		HAL_ADC_Start(&hadc1);
+		HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+		adc_value+=HAL_ADC_GetValue(&hadc1);
+	}
+	HAL_ADC_Stop(&hadc1);
+	adc_value=adc_value/10;
+	offset_current=(((adc_value)/4096.0)*3.3);
+	adc_value=0;
+	char offset_msg[50];
+	//sprintf(offset_msg,"Offset= %fV\r\n",offset_current);
+	//HAL_UART_Transmit(&huart2, offset_msg, sizeof(offset_msg), HAL_MAX_DELAY);
+
 
 	HAL_UART_Receive_IT(&huart2, uartRxBuffer, UART_RX_BUFFER_SIZE);
 	HAL_Delay(10);

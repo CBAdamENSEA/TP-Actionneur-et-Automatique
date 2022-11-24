@@ -1,10 +1,10 @@
 /**
-  ******************************************************************************
-  * @file	shell.c
-  * @authors	Adam Cheikh Brahim, Karim Abdellaziz and Sami Asfary
-  * @brief	Commands management
-  ******************************************************************************
-  **/
+ ******************************************************************************
+ * @file	shell.c
+ * @authors	Adam Cheikh Brahim, Karim Abdellaziz and Sami Asfary
+ * @brief	Commands management
+ ******************************************************************************
+ **/
 
 #include "shell.h"
 #include "pwm.h"
@@ -18,6 +18,8 @@
 extern uint8_t alpha_now;
 extern uint8_t alpha_dest;
 extern UART_HandleTypeDef huart2;
+
+
 
 
 
@@ -51,23 +53,29 @@ uint8_t stop[]="Power OFF\r\n";
 uint8_t cmdNotFound[]="Command not found\r\n";
 uint8_t speed[50];
 uint8_t current[50];
+uint8_t encoder[50];
 uint8_t first_start=1;
 
 uint16_t speed_value;
 float current_value;
+int rotary_counter=0;
+extern float vitesse_encod;
+
+extern float current_v;
+extern uint32_t adc_value;
 
 
 /**
-  * @brief Print the prompt message: "user@Nucleo-STM32G431>>".
-  */
+ * @brief Print the prompt message: "user@Nucleo-STM32G431>>".
+ */
 void prompt_display(void)
 {
 	HAL_UART_Transmit(&huart2, prompt, sizeof(prompt), HAL_MAX_DELAY);
 }
 
 /**
-  * @brief Print the starting message: "Welcome on Nucleo-STM32G431".
-  */
+ * @brief Print the starting message: "Welcome on Nucleo-STM32G431".
+ */
 void start_display(void)
 {
 	HAL_UART_Transmit(&huart2, started, sizeof(started), HAL_MAX_DELAY);
@@ -75,11 +83,11 @@ void start_display(void)
 
 
 /**
-  * @brief Respond to the command written in the serial terminal.
-  * @note Personalized responses to each command.
-  * @param *newCmdReady	Reception Flag (1 when a command is received).
-  * @param cmdBuffer   Command.
-  */
+ * @brief Respond to the command written in the serial terminal.
+ * @note Personalized responses to each command.
+ * @param *newCmdReady	Reception Flag (1 when a command is received).
+ * @param cmdBuffer   Command.
+ */
 void shell(int * newCmdReady,char cmdBuffer[CMD_BUFFER_SIZE])
 {
 	if (*newCmdReady)
@@ -134,9 +142,16 @@ void shell(int * newCmdReady,char cmdBuffer[CMD_BUFFER_SIZE])
 		}
 		else if (strncmp(cmdBuffer,"current",strlen("current"))==0)
 		{
-			current_value=read_current();
-			sprintf(current,"Current value is %f\r\n",current_value);
+			sprintf(current,"Current value is %f\r\n",current_v);
 			HAL_UART_Transmit(&huart2, current, sizeof(current), HAL_MAX_DELAY);
+		}
+		else if (strncmp(cmdBuffer,"encoder",strlen("encoder"))==0)
+		{
+
+			sprintf(encoder,"Speed is %f t/s\r\n",vitesse_encod);
+			HAL_UART_Transmit(&huart2, encoder, sizeof(encoder), HAL_MAX_DELAY);
+
+
 		}
 		else
 		{
@@ -149,5 +164,5 @@ void shell(int * newCmdReady,char cmdBuffer[CMD_BUFFER_SIZE])
 	}
 }
 /**
-  * @}
-  */
+ * @}
+ */
