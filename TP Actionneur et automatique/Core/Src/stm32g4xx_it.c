@@ -32,7 +32,15 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define NB_CRAN 2048 /*   */
+#define ADC_MAX_VALUE 4096.0
+#define ADC_VOLTAGE_REF 3.3
+#define CURRENT_FEEDBACK_SCALING 12
+
+#define ENC_CPR 2048 /* Count per revolution of our encoder */
+#define ENC_FREQ 10
+
+#define DEFAULT_SPEED 50
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -211,16 +219,17 @@ void SysTick_Handler(void)
 
 /**
   * @brief This function handles ADC1 and ADC2 global interrupt.
+  * @note This function is used to fetch and process the feedback current from the power module.
   */
 void ADC1_2_IRQHandler(void)
 {
   /* USER CODE BEGIN ADC1_2_IRQn 0 */
 	adc_value=HAL_ADC_GetValue(&hadc1);
 	//current_v=((((adc_value)/4096.0)*3.3)-offset_current)*12;
-	current_v=(adc_value)/4096.0;
-	current_v*=3.3;
+	current_v=(float)(adc_value)/ADC_MAX_VALUE;
+	current_v*=ADC_VOLTAGE_REF;
 	current_v-=offset_current;
-	current_v*=12;
+	current_v*=CURRENT_FEEDBACK_SCALING;
 	//current_v=(((adc_value)/4096.0)*3.3);
   /* USER CODE END ADC1_2_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc1);
@@ -231,6 +240,8 @@ void ADC1_2_IRQHandler(void)
 
 /**
   * @brief This function handles TIM1 update interrupt and TIM16 global interrupt.
+  * @note This function start the acquisition of the feedback current from the power module.
+  * @note The acquisition is synchronous with the PWM to prevent error from the switching noise of the transistor.
   */
 void TIM1_UP_TIM16_IRQHandler(void)
 {
@@ -259,6 +270,7 @@ void USART2_IRQHandler(void)
 
 /**
   * @brief This function handles EXTI line[15:10] interrupts.
+  * @note Launch the startup sequence with a push of the user button.
   */
 void EXTI15_10_IRQHandler(void)
 {
@@ -274,11 +286,12 @@ void EXTI15_10_IRQHandler(void)
 
 /**
   * @brief This function handles TIM8 update interrupt.
+  * @note This function tracks the movement of the moteur every 100 us.
   */
 void TIM8_UP_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM8_UP_IRQn 0 */
-	vitesse_encod = ((float)TIM2->CNT)*10/NB_CRAN;
+	vitesse_encod = ((float)TIM2->CNT)*ENC_FREQ/ENC_CPR;
 	TIM2->CNT = 0;
   /* USER CODE END TIM8_UP_IRQn 0 */
   HAL_TIM_IRQHandler(&htim8);
@@ -289,6 +302,7 @@ void TIM8_UP_IRQHandler(void)
 
 /**
   * @brief This function handles TIM6 global interrupt, DAC1 and DAC3 channel underrun error interrupts.
+  * @note This function delay speed changes, such as the motor and the power control module does not need to be reset.
   */
 void TIM6_DAC_IRQHandler(void)
 {
@@ -313,13 +327,15 @@ void TIM6_DAC_IRQHandler(void)
 
 /**
   * @brief This function handles TIM7 global interrupt, DAC2 and DAC4 channel underrun error interrupts.
+  * @note This function finishes the startup sequence.
+  * @note This function also reset the speed such as to prevent the power module from encountering an error.
   */
 void TIM7_DAC_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM7_DAC_IRQn 0 */
 	HAL_GPIO_WritePin(ISO_RESET_GPIO_Port, ISO_RESET_Pin, GPIO_PIN_RESET);
-	alpha_now = 60;
-	alpha_dest = 60;
+	alpha_now = DEFAULT_SPEED;
+	alpha_dest = DEFAULT_SPEED;
 	change_speed(alpha_now);
 	start_command(alpha_dest);
 
