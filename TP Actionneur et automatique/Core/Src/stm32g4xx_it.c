@@ -318,6 +318,9 @@ void TIM7_DAC_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM7_DAC_IRQn 0 */
 	HAL_GPIO_WritePin(ISO_RESET_GPIO_Port, ISO_RESET_Pin, GPIO_PIN_RESET);
+	alpha_now = 60;
+	alpha_dest = 60;
+	change_speed(alpha_now);
 	start_command(alpha_dest);
 
   /* USER CODE END TIM7_DAC_IRQn 0 */
