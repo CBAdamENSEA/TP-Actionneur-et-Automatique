@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['debugmon_5fhandler_0',['DebugMon_Handler',['../stm32g4xx__it_8h.html#adbdfb05858cc36fc520974df37ec3cb0',1,'DebugMon_Handler(void):&#160;stm32g4xx_it.c'],['../stm32g4xx__it_8c.html#adbdfb05858cc36fc520974df37ec3cb0',1,'DebugMon_Handler(void):&#160;stm32g4xx_it.c']]]
+  ['change_5fspeed_0',['change_speed',['../pwm_8c.html#a087223cda7d7d6ff73c76e1632daa6b0',1,'pwm.c']]],
+  ['change_5fspeed_5fprogressively_1',['change_speed_progressively',['../pwm_8c.html#ab0055d48827951830c54e4d671c11004',1,'pwm.c']]]
 ];

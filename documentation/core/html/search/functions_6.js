@@ -1,7 +1,12 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main.c']]],
-  ['memmanage_5fhandler_1',['MemManage_Handler',['../stm32g4xx__it_8h.html#a3150f74512510287a942624aa9b44cc5',1,'MemManage_Handler(void):&#160;stm32g4xx_it.c'],['../stm32g4xx__it_8c.html#a3150f74512510287a942624aa9b44cc5',1,'MemManage_Handler(void):&#160;stm32g4xx_it.c']]],
-  ['mx_5fadc1_5finit_2',['MX_ADC1_Init',['../adc_8h.html#acccd58aa70215a6b184ad242312ffd0c',1,'MX_ADC1_Init(void):&#160;adc.c'],['../adc_8c.html#acccd58aa70215a6b184ad242312ffd0c',1,'MX_ADC1_Init(void):&#160;adc.c']]],
-  ['mx_5fgpio_5finit_3',['MX_GPIO_Init',['../gpio_8h.html#ac724e431d2af879252de35615be2bdea',1,'MX_GPIO_Init(void):&#160;gpio.c'],['../gpio_8c.html#ac724e431d2af879252de35615be2bdea',1,'MX_GPIO_Init(void):&#160;gpio.c']]]
+  ['hal_5fadc_5fmspdeinit_0',['HAL_ADC_MspDeInit',['../adc_8c.html#a3f61f2c2af0f122f81a87af8ad7b4360',1,'adc.c']]],
+  ['hal_5fadc_5fmspinit_1',['HAL_ADC_MspInit',['../adc_8c.html#ac3139540667c403c5dfd37a99c610b1c',1,'adc.c']]],
+  ['hal_5fmspinit_2',['HAL_MspInit',['../stm32g4xx__hal__msp_8c.html#ae4fb8e66865c87d0ebab74a726a6891f',1,'stm32g4xx_hal_msp.c']]],
+  ['hal_5ftim_5fencoder_5fmspdeinit_3',['HAL_TIM_Encoder_MspDeInit',['../tim_8c.html#aa45a7ed70c5190ddc921cc667a00e801',1,'tim.c']]],
+  ['hal_5ftim_5fencoder_5fmspinit_4',['HAL_TIM_Encoder_MspInit',['../tim_8c.html#ac9447b4beb065a4630e94c133d7fd97c',1,'tim.c']]],
+  ['hal_5ftim_5fmsppostinit_5',['HAL_TIM_MspPostInit',['../tim_8h.html#ae70bce6c39d0b570a7523b86738cec4b',1,'HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim):&#160;tim.c'],['../tim_8c.html#a708f19bbc41b292fccf38f2d9796c46a',1,'HAL_TIM_MspPostInit(TIM_HandleTypeDef *timHandle):&#160;tim.c']]],
+  ['hal_5fuart_5fmspdeinit_6',['HAL_UART_MspDeInit',['../usart_8c.html#a94cd2c58add4f2549895a03bf267622e',1,'usart.c']]],
+  ['hal_5fuart_5fmspinit_7',['HAL_UART_MspInit',['../usart_8c.html#a62a25476866998c7aadfb5c0864fa349',1,'usart.c']]],
+  ['hardfault_5fhandler_8',['HardFault_Handler',['../stm32g4xx__it_8h.html#a2bffc10d5bd4106753b7c30e86903bea',1,'HardFault_Handler(void):&#160;stm32g4xx_it.c'],['../stm32g4xx__it_8c.html#a2bffc10d5bd4106753b7c30e86903bea',1,'HardFault_Handler(void):&#160;stm32g4xx_it.c']]]
 ];
