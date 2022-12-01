@@ -86,23 +86,25 @@ $(function() {
 <div class="textblock"><code>#include &quot;shell.h&quot;</code><br />
 <code>#include &quot;pwm.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
-</div>
-<p><a href="shell_8c_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ac2cd96d53dd3ba6407db6766c3d92b26"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#ac2cd96d53dd3ba6407db6766c3d92b26">MAX_SPEED</a>&#160;&#160;&#160;99</td></tr>
+<tr class="memitem:ac2cd96d53dd3ba6407db6766c3d92b26"><td class="memItemLeft" align="right" valign="top"><a id="ac2cd96d53dd3ba6407db6766c3d92b26" name="ac2cd96d53dd3ba6407db6766c3d92b26"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_SPEED</b>&#160;&#160;&#160;99 /* Vitesse maximale */</td></tr>
 <tr class="separator:ac2cd96d53dd3ba6407db6766c3d92b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5f5efaa5cb771bd06da4bfe6046809e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#ad5f5efaa5cb771bd06da4bfe6046809e">MIN_SPEED</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:ad5f5efaa5cb771bd06da4bfe6046809e"><td class="memItemLeft" align="right" valign="top"><a id="ad5f5efaa5cb771bd06da4bfe6046809e" name="ad5f5efaa5cb771bd06da4bfe6046809e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_SPEED</b>&#160;&#160;&#160;1 /* Vitesse minimale */</td></tr>
 <tr class="separator:ad5f5efaa5cb771bd06da4bfe6046809e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab3ff7c484572c3ffcae87f920c5d565e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#ab3ff7c484572c3ffcae87f920c5d565e">prompt_display</a> (void)</td></tr>
-<tr class="memdesc:ab3ff7c484572c3ffcae87f920c5d565e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the prompt message: "user@Nucleo-STM32G431&gt;&gt;".  <a href="shell_8c.html#ab3ff7c484572c3ffcae87f920c5d565e">More...</a><br /></td></tr>
+<tr class="memitem:ab3ff7c484572c3ffcae87f920c5d565e"><td class="memItemLeft" align="right" valign="top"><a id="ab3ff7c484572c3ffcae87f920c5d565e" name="ab3ff7c484572c3ffcae87f920c5d565e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>prompt_display</b> (void)</td></tr>
+<tr class="memdesc:ab3ff7c484572c3ffcae87f920c5d565e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the prompt message: "user@Nucleo-STM32G431&gt;&gt;". <br /></td></tr>
 <tr class="separator:ab3ff7c484572c3ffcae87f920c5d565e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abff74291ae11b667b1b9d6b42e8b0508"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#abff74291ae11b667b1b9d6b42e8b0508">start_display</a> (void)</td></tr>
-<tr class="memdesc:abff74291ae11b667b1b9d6b42e8b0508"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the starting message: "Welcome on Nucleo-STM32G431".  <a href="shell_8c.html#abff74291ae11b667b1b9d6b42e8b0508">More...</a><br /></td></tr>
+<tr class="memitem:abff74291ae11b667b1b9d6b42e8b0508"><td class="memItemLeft" align="right" valign="top"><a id="abff74291ae11b667b1b9d6b42e8b0508" name="abff74291ae11b667b1b9d6b42e8b0508"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>start_display</b> (void)</td></tr>
+<tr class="memdesc:abff74291ae11b667b1b9d6b42e8b0508"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the starting message: "Welcome on Nucleo-STM32G431". <br /></td></tr>
 <tr class="separator:abff74291ae11b667b1b9d6b42e8b0508"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c03db0c278ef0a8c1c88ea4e1bfa85c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a7c03db0c278ef0a8c1c88ea4e1bfa85c">shell</a> (int *newCmdReady, char cmdBuffer[CMD_BUFFER_SIZE])</td></tr>
 <tr class="memdesc:a7c03db0c278ef0a8c1c88ea4e1bfa85c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Respond to the command written in the serial terminal.  <a href="shell_8c.html#a7c03db0c278ef0a8c1c88ea4e1bfa85c">More...</a><br /></td></tr>
@@ -110,98 +112,68 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:af12c5df1f383d0e5a393eb8d490659bf"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#af12c5df1f383d0e5a393eb8d490659bf">alpha_now</a></td></tr>
+<tr class="memitem:af12c5df1f383d0e5a393eb8d490659bf"><td class="memItemLeft" align="right" valign="top"><a id="af12c5df1f383d0e5a393eb8d490659bf" name="af12c5df1f383d0e5a393eb8d490659bf"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>alpha_now</b></td></tr>
 <tr class="separator:af12c5df1f383d0e5a393eb8d490659bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afda334ad4c41fb3e1be09e6534ff8212"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#afda334ad4c41fb3e1be09e6534ff8212">alpha_dest</a></td></tr>
+<tr class="memitem:afda334ad4c41fb3e1be09e6534ff8212"><td class="memItemLeft" align="right" valign="top"><a id="afda334ad4c41fb3e1be09e6534ff8212" name="afda334ad4c41fb3e1be09e6534ff8212"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>alpha_dest</b></td></tr>
 <tr class="separator:afda334ad4c41fb3e1be09e6534ff8212"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9479c261d65eecedd3d9582f7f0f89c"><td class="memItemLeft" align="right" valign="top">UART_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#aa9479c261d65eecedd3d9582f7f0f89c">huart2</a></td></tr>
+<tr class="memitem:aa9479c261d65eecedd3d9582f7f0f89c"><td class="memItemLeft" align="right" valign="top"><a id="aa9479c261d65eecedd3d9582f7f0f89c" name="aa9479c261d65eecedd3d9582f7f0f89c"></a>
+UART_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>huart2</b></td></tr>
 <tr class="separator:aa9479c261d65eecedd3d9582f7f0f89c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a835573497a60b314a9bf5a6fcac9602a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a835573497a60b314a9bf5a6fcac9602a">started</a> []</td></tr>
 <tr class="separator:a835573497a60b314a9bf5a6fcac9602a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b893859891afe33d4bba72ba06fd381"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a8b893859891afe33d4bba72ba06fd381">prompt</a> [] =&quot;user@Nucleo-STM32G431&gt;&gt;&quot;</td></tr>
+<tr class="memitem:a8b893859891afe33d4bba72ba06fd381"><td class="memItemLeft" align="right" valign="top"><a id="a8b893859891afe33d4bba72ba06fd381" name="a8b893859891afe33d4bba72ba06fd381"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>prompt</b> [] =&quot;user@Nucleo-STM32G431&gt;&gt;&quot;</td></tr>
 <tr class="separator:a8b893859891afe33d4bba72ba06fd381"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2b897a62eb9817d9ab655f14872c1e0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#af2b897a62eb9817d9ab655f14872c1e0">help</a> []</td></tr>
 <tr class="separator:af2b897a62eb9817d9ab655f14872c1e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2419b0dfdf3fba467bc3be1c06df66b9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a2419b0dfdf3fba467bc3be1c06df66b9">pinout</a> []</td></tr>
 <tr class="separator:a2419b0dfdf3fba467bc3be1c06df66b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0871578a0518f9463c3ad9bb9cd1e796"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a0871578a0518f9463c3ad9bb9cd1e796">start</a> [] =&quot;Power ON\r\n&quot;</td></tr>
+<tr class="memitem:a0871578a0518f9463c3ad9bb9cd1e796"><td class="memItemLeft" align="right" valign="top"><a id="a0871578a0518f9463c3ad9bb9cd1e796" name="a0871578a0518f9463c3ad9bb9cd1e796"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> [] =&quot;Power ON\r\n&quot;</td></tr>
 <tr class="separator:a0871578a0518f9463c3ad9bb9cd1e796"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac46db973b2109ae5af8d6d0383e8d023"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#ac46db973b2109ae5af8d6d0383e8d023">stop</a> [] =&quot;Power OFF\r\n&quot;</td></tr>
+<tr class="memitem:ac46db973b2109ae5af8d6d0383e8d023"><td class="memItemLeft" align="right" valign="top"><a id="ac46db973b2109ae5af8d6d0383e8d023" name="ac46db973b2109ae5af8d6d0383e8d023"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> [] =&quot;Power OFF\r\n&quot;</td></tr>
 <tr class="separator:ac46db973b2109ae5af8d6d0383e8d023"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25205e7c6d817620c1d9f7351a817a04"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a25205e7c6d817620c1d9f7351a817a04">cmdNotFound</a> [] =&quot;Command not found\r\n&quot;</td></tr>
+<tr class="memitem:a25205e7c6d817620c1d9f7351a817a04"><td class="memItemLeft" align="right" valign="top"><a id="a25205e7c6d817620c1d9f7351a817a04" name="a25205e7c6d817620c1d9f7351a817a04"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>cmdNotFound</b> [] =&quot;Command not found\r\n&quot;</td></tr>
 <tr class="separator:a25205e7c6d817620c1d9f7351a817a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a601da5d4c826b7a89a35bb2751007814"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a601da5d4c826b7a89a35bb2751007814">speed</a> [50]</td></tr>
+<tr class="memitem:a601da5d4c826b7a89a35bb2751007814"><td class="memItemLeft" align="right" valign="top"><a id="a601da5d4c826b7a89a35bb2751007814" name="a601da5d4c826b7a89a35bb2751007814"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>speed</b> [50]</td></tr>
 <tr class="separator:a601da5d4c826b7a89a35bb2751007814"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a191fb863b22df52efdb1878aa7e16c0b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a191fb863b22df52efdb1878aa7e16c0b">current</a> [50]</td></tr>
+<tr class="memitem:a191fb863b22df52efdb1878aa7e16c0b"><td class="memItemLeft" align="right" valign="top"><a id="a191fb863b22df52efdb1878aa7e16c0b" name="a191fb863b22df52efdb1878aa7e16c0b"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>current</b> [50]</td></tr>
 <tr class="separator:a191fb863b22df52efdb1878aa7e16c0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c6d89d0a280b3cce8f2b480209580ba"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a6c6d89d0a280b3cce8f2b480209580ba">first_start</a> =1</td></tr>
+<tr class="memitem:a93d447324c9e698a5a9a3c2c86287364"><td class="memItemLeft" align="right" valign="top"><a id="a93d447324c9e698a5a9a3c2c86287364" name="a93d447324c9e698a5a9a3c2c86287364"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>encoder</b> [50]</td></tr>
+<tr class="separator:a93d447324c9e698a5a9a3c2c86287364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c6d89d0a280b3cce8f2b480209580ba"><td class="memItemLeft" align="right" valign="top"><a id="a6c6d89d0a280b3cce8f2b480209580ba" name="a6c6d89d0a280b3cce8f2b480209580ba"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>first_start</b> =1</td></tr>
 <tr class="separator:a6c6d89d0a280b3cce8f2b480209580ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9364f6fe09692c0043b6ba42511a515"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#af9364f6fe09692c0043b6ba42511a515">speed_value</a></td></tr>
+<tr class="memitem:af9364f6fe09692c0043b6ba42511a515"><td class="memItemLeft" align="right" valign="top"><a id="af9364f6fe09692c0043b6ba42511a515" name="af9364f6fe09692c0043b6ba42511a515"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>speed_value</b></td></tr>
 <tr class="separator:af9364f6fe09692c0043b6ba42511a515"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30aa1ab8d0ac8b5c390517f0357a48a9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a30aa1ab8d0ac8b5c390517f0357a48a9">current_value</a></td></tr>
+<tr class="memitem:a30aa1ab8d0ac8b5c390517f0357a48a9"><td class="memItemLeft" align="right" valign="top"><a id="a30aa1ab8d0ac8b5c390517f0357a48a9" name="a30aa1ab8d0ac8b5c390517f0357a48a9"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>current_value</b></td></tr>
 <tr class="separator:a30aa1ab8d0ac8b5c390517f0357a48a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ef42f0a1c6c4361e21c1c423718528a"><td class="memItemLeft" align="right" valign="top"><a id="a3ef42f0a1c6c4361e21c1c423718528a" name="a3ef42f0a1c6c4361e21c1c423718528a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>rotary_counter</b> =0</td></tr>
+<tr class="separator:a3ef42f0a1c6c4361e21c1c423718528a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa84de381ed4cb2be0357cbc34ab657a6"><td class="memItemLeft" align="right" valign="top"><a id="aa84de381ed4cb2be0357cbc34ab657a6" name="aa84de381ed4cb2be0357cbc34ab657a6"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>vitesse_encod</b></td></tr>
+<tr class="separator:aa84de381ed4cb2be0357cbc34ab657a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a571d68f0f30fdae825b5ed6d1645d102"><td class="memItemLeft" align="right" valign="top"><a id="a571d68f0f30fdae825b5ed6d1645d102" name="a571d68f0f30fdae825b5ed6d1645d102"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>current_v</b></td></tr>
+<tr class="separator:a571d68f0f30fdae825b5ed6d1645d102"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f4661221d78df45d6974e3a1327b0ea"><td class="memItemLeft" align="right" valign="top"><a id="a6f4661221d78df45d6974e3a1327b0ea" name="a6f4661221d78df45d6974e3a1327b0ea"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>adc_value</b></td></tr>
+<tr class="separator:a6f4661221d78df45d6974e3a1327b0ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Commands management. </p>
 <dl class="section author"><dt>Authors</dt><dd>Adam Cheikh Brahim, Karim Abdellaziz and Sami Asfary  </dd></dl>
-
-<p class="definition">Definition in file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ac2cd96d53dd3ba6407db6766c3d92b26" name="ac2cd96d53dd3ba6407db6766c3d92b26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2cd96d53dd3ba6407db6766c3d92b26">&#9670;&#160;</a></span>MAX_SPEED</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_SPEED&#160;&#160;&#160;99</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00015">15</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
-<a id="ad5f5efaa5cb771bd06da4bfe6046809e" name="ad5f5efaa5cb771bd06da4bfe6046809e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5f5efaa5cb771bd06da4bfe6046809e">&#9670;&#160;</a></span>MIN_SPEED</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MIN_SPEED&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00016">16</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="ab3ff7c484572c3ffcae87f920c5d565e" name="ab3ff7c484572c3ffcae87f920c5d565e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3ff7c484572c3ffcae87f920c5d565e">&#9670;&#160;</a></span>prompt_display()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void prompt_display </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print the prompt message: "user@Nucleo-STM32G431&gt;&gt;". </p>
-
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00063">63</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a7c03db0c278ef0a8c1c88ea4e1bfa85c" name="a7c03db0c278ef0a8c1c88ea4e1bfa85c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c03db0c278ef0a8c1c88ea4e1bfa85c">&#9670;&#160;</a></span>shell()</h2>
 
@@ -238,145 +210,9 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00083">83</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
-<a id="abff74291ae11b667b1b9d6b42e8b0508" name="abff74291ae11b667b1b9d6b42e8b0508"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abff74291ae11b667b1b9d6b42e8b0508">&#9670;&#160;</a></span>start_display()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void start_display </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print the starting message: "Welcome on Nucleo-STM32G431". </p>
-
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00071">71</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="afda334ad4c41fb3e1be09e6534ff8212" name="afda334ad4c41fb3e1be09e6534ff8212"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afda334ad4c41fb3e1be09e6534ff8212">&#9670;&#160;</a></span>alpha_dest</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t alpha_dest</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00058">58</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
-
-</div>
-</div>
-<a id="af12c5df1f383d0e5a393eb8d490659bf" name="af12c5df1f383d0e5a393eb8d490659bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af12c5df1f383d0e5a393eb8d490659bf">&#9670;&#160;</a></span>alpha_now</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t alpha_now</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00057">57</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
-
-</div>
-</div>
-<a id="a25205e7c6d817620c1d9f7351a817a04" name="a25205e7c6d817620c1d9f7351a817a04"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25205e7c6d817620c1d9f7351a817a04">&#9670;&#160;</a></span>cmdNotFound</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t cmdNotFound[] =&quot;Command not found\r\n&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00051">51</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
-<a id="a191fb863b22df52efdb1878aa7e16c0b" name="a191fb863b22df52efdb1878aa7e16c0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a191fb863b22df52efdb1878aa7e16c0b">&#9670;&#160;</a></span>current</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t current[50]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00053">53</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
-<a id="a30aa1ab8d0ac8b5c390517f0357a48a9" name="a30aa1ab8d0ac8b5c390517f0357a48a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30aa1ab8d0ac8b5c390517f0357a48a9">&#9670;&#160;</a></span>current_value</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float current_value</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00057">57</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
-<a id="a6c6d89d0a280b3cce8f2b480209580ba" name="a6c6d89d0a280b3cce8f2b480209580ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c6d89d0a280b3cce8f2b480209580ba">&#9670;&#160;</a></span>first_start</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t first_start =1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00054">54</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
 <a id="af2b897a62eb9817d9ab655f14872c1e0" name="af2b897a62eb9817d9ab655f14872c1e0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af2b897a62eb9817d9ab655f14872c1e0">&#9670;&#160;</a></span>help</h2>
 
@@ -393,32 +229,6 @@ Variables</h2></td></tr>
 <div class="line">        <span class="stringliteral">&quot;start (to turn on the motor)\r\n&quot;</span></div>
 <div class="line">        <span class="stringliteral">&quot;stop (to turn off the motor)\r\n&quot;</span></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00034">34</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
-<a id="aa9479c261d65eecedd3d9582f7f0f89c" name="aa9479c261d65eecedd3d9582f7f0f89c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9479c261d65eecedd3d9582f7f0f89c">&#9670;&#160;</a></span>huart2</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">UART_HandleTypeDef huart2</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="usart_8c_source.html#l00027">27</a> of file <a class="el" href="usart_8c_source.html">usart.c</a>.</p>
-
 </div>
 </div>
 <a id="a2419b0dfdf3fba467bc3be1c06df66b9" name="a2419b0dfdf3fba467bc3be1c06df66b9"></a>
@@ -444,72 +254,6 @@ Variables</h2></td></tr>
 <div class="line">        <span class="stringliteral">&quot;PA14: T_SWCLK: to debug the stm32 (serial wire)\r\n&quot;</span></div>
 <div class="line">        <span class="stringliteral">&quot;PC13: BUTTON: to detect the pressing of the button\r\n&quot;</span></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00038">38</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
-<a id="a8b893859891afe33d4bba72ba06fd381" name="a8b893859891afe33d4bba72ba06fd381"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b893859891afe33d4bba72ba06fd381">&#9670;&#160;</a></span>prompt</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t prompt[] =&quot;user@Nucleo-STM32G431&gt;&gt;&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00030">30</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
-<a id="a601da5d4c826b7a89a35bb2751007814" name="a601da5d4c826b7a89a35bb2751007814"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a601da5d4c826b7a89a35bb2751007814">&#9670;&#160;</a></span>speed</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t speed[50]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00052">52</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
-<a id="af9364f6fe09692c0043b6ba42511a515" name="af9364f6fe09692c0043b6ba42511a515"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af9364f6fe09692c0043b6ba42511a515">&#9670;&#160;</a></span>speed_value</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t speed_value</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00056">56</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
-<a id="a0871578a0518f9463c3ad9bb9cd1e796" name="a0871578a0518f9463c3ad9bb9cd1e796"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0871578a0518f9463c3ad9bb9cd1e796">&#9670;&#160;</a></span>start</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t start[] =&quot;Power ON\r\n&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00049">49</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
 </div>
 </div>
 <a id="a835573497a60b314a9bf5a6fcac9602a" name="a835573497a60b314a9bf5a6fcac9602a"></a>
@@ -529,24 +273,6 @@ Variables</h2></td></tr>
 <div class="line">        <span class="stringliteral">&quot;\r\n*-----------------------------*&quot;</span></div>
 <div class="line">        <span class="stringliteral">&quot;\r\n&quot;</span></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00025">25</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
-</div>
-</div>
-<a id="ac46db973b2109ae5af8d6d0383e8d023" name="ac46db973b2109ae5af8d6d0383e8d023"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac46db973b2109ae5af8d6d0383e8d023">&#9670;&#160;</a></span>stop</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t stop[] =&quot;Power OFF\r\n&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="shell_8c_source.html#l00050">50</a> of file <a class="el" href="shell_8c_source.html">shell.c</a>.</p>
-
 </div>
 </div>
 </div><!-- contents -->

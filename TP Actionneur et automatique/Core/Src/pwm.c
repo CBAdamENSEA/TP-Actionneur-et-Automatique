@@ -25,10 +25,10 @@ extern uint32_t adc_value;
 
 
 /**
-  * @brief
-  * @param
-  * @param
-  * @retval
+  * @brief This function startup every peripheral used for the command of the motor
+  * @note Startup the chopper and the encoder feedback.
+  * @param alpha	The duty cycle used for this start.
+  * @retval None
   */
 void start_command(uint8_t alpha)
 {
@@ -46,10 +46,9 @@ void start_command(uint8_t alpha)
 }
 
 /**
-  * @brief
-  * @param
-  * @param
-  * @retval
+  * @brief This function stops the timer related to the chopper control.
+  * @note Only stops the chopper not the encoder feedback.
+  * @retval None
   */
 void stop_command()
 {
@@ -62,10 +61,10 @@ void stop_command()
 }
 
 /**
-  * @brief
-  * @param
-  * @param
-  * @retval
+  * @brief Immediatly change the duty cycle of the PWM controlling the chopper.
+  * @note Warning : The motor may not follow the change if it is to fast.
+  * @param alpha	New duty cycle of the PWM.
+  * @retval None
   */
 void change_speed(uint8_t alpha)
 {
@@ -76,10 +75,9 @@ void change_speed(uint8_t alpha)
 }
 
 /**
-  * @brief
-  * @param
-  * @param
-  * @retval
+  * @brief Change the duty cycle of the PWM controlling the chopper with a timer interrupt imposing a delay.
+  * @param alpha	New duty cycle of the PWM.
+  * @retval None
   */
 void change_speed_progressively(uint8_t alpha)
 {
@@ -89,10 +87,9 @@ void change_speed_progressively(uint8_t alpha)
 }
 
 /**
-  * @brief
-  * @param
-  * @param
-  * @retval
+  * @brief Launch the startup sequence for the chopper.
+  * @note The startup consist of setting HIGH a pin during 20us.
+  * @retval None
   */
 void start_up()
 {
@@ -102,10 +99,8 @@ void start_up()
 }
 
 /**
-  * @brief
-  * @param
-  * @param
-  * @retval
+  * @brief Launch a reading of the current feedback of the chopper.
+  * @retval None
   */
 void read_current()
 {
