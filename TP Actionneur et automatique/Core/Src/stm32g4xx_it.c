@@ -37,7 +37,7 @@
 #define CURRENT_FEEDBACK_SCALING 12
 
 #define ENC_CPR 2048 /* Count per revolution of our encoder */
-#define ENC_FREQ 10
+#define ENC_FREQ 10 /* TIM 8 Frequency */
 
 #define DEFAULT_SPEED 50
 
