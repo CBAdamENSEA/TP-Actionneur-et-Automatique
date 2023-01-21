@@ -61,7 +61,8 @@ Nous visualisons les quatres signaux PWM afin de verifier le respect du temps mo
 sur la figure ci-dessus nous pouvons voir gràce aux curseurs que le temps mort est respecté ,ce dernier vaut 2,17us ce qui respecte le cahier des charges 
 
 une fois que cette partie a été achevé, nous pouvons à present connecter notre STM32 au hacheur 
-broche hacheur et numéro		Broche STM32
+
+broche hacheur		numéro		Broche STM32
 CMD_B_TOP			11			PA8
 CMD_Y_TOP			12			PA9
 CMD_B_BOT			29			PA11
