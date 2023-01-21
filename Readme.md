@@ -2,26 +2,32 @@
 
 
 ## But du TP 
-Le TP vise à utiliser la carte STM32 pour commander une machine à courant continu , la liaison entre l'étage numérique et l'étage de puissance se fera grace au PowerModule 70097.
-le but finale etant d'acquerir les données de vitesse et de courant puis asservir le moteur en temps réel.  
+Le TP vise à utiliser la carte STM32 (Nucleo-STM32G474RE) pour commander une machine à courant continu , la liaison entre l'étage numérique et l'étage de puissance se fera grace au PowerModule 70097.
+
+Le but finale étant d'acquerir les données de vitesse et de courant pour asservir le moteur.
 
 ## Pinout
-nous avons configuré notre STM32 de la maniere suivante: 
+Nous avons configuré notre STM32 de la maniere suivante: 
+
 ![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/tree/master/images/Pinout.PNG)
 
 ## TP1: Commande MCC basique
 
-Cette premiere partie consiste à généré quatre signaux PWM à partir du TIMER 1, les quatre signaux PWM doivent respecter les contraintes suivantes:
+Cette premiere partie consiste à générer quatre signaux PWM à partir du TIMER 1, les quatre signaux PWM doivent respecter les contraintes suivantes:
 
 Fréquence de la PWM : 16 kHz
+
 Temps mort minimum : 2 µs
+
 Résolution minimum : 10 bits.
 
 ## Configuration du TIMER
 Nous avons configuré le TIMER de la facon suivante: 
 ARR=1061 
 PSC=9
+
 ![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/tree/master/images/Configuration_timer.PNG)
+
 Cependant nous avons une valeur de fréquence égale a 16.022 kHz, cette configuration est celle qui se rapproche le plus des 16 kHz demandé. 
 nous pouvons également voir les channel 1 et 2 qui sont en mode complementaire. 
 à présent nous calculons le temps mort, pour cela nous utilisons les formules suivantes: 
