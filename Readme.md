@@ -15,31 +15,45 @@ Nous avons configuré notre STM32 de la maniere suivante:
 
 Cette premiere partie consiste à générer quatre signaux PWM à partir du TIMER 1, les quatre signaux PWM doivent respecter les contraintes suivantes:
 
-Fréquence de la PWM : 16 kHz
+Ils doivent être en mode **complémentaire décalée**.
 
-Temps mort minimum : 2 µs
+**Fréquence** des signaux PWM : 16 kHz.
 
-Résolution minimum : 10 bits.
+**Temps mort** minimum : 2 µs.
+
+**Résolution** minimum : 10 bits.
+
+
 
 ## Configuration du TIMER
-Nous avons besoin d'une fréquence de 16kHz pour la PWM avec une résolution de 10 bits minimum. 
 
+Pour les signaux PWM, nous avons utilisé le Timer 1 avec lequel on peut activer deux signaux PWM complémentaires par channel 
+(PWM Generation CHx,CHxN). 
+Donc on peut créer une **commande complémentaire** décalée de rapport cyclique alpha avec deux channels 
+(channel 1: rapport cyclique=alpha, channel 2: rapport cyclique=1-alpha)
+
+Nous avons besoin d'une **fréquence** de 16kHz pour la PWM avec une résolution de 10 bits minimum. 
 Avec une ARR à (1024-1) et une fréquence f_APB à 170 MHz, on n'a pas réussi à trouver une bonne valeur de PSC pour avoir 16kHz.
-Donc nous avons opté pour une ARR à (1062-1) et un PSC à (10-1) pour avoir 16,022 kHz qui se rapproche le plus des 16 kHz demandé.
+Donc nous avons opté pour une ARR à (1062-1) et un PSC à (10-1) pour avoir une fréquence de 16,022 kHz qui se rapproche le plus des 16 kHz demandé.
 
 
 ![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/Configuration_timer.png)
 
-Nous voud
-nous pouvons également voir les channel 1 et 2 qui sont en mode complementaire. 
-à présent nous calculons le temps mort, pour cela nous utilisons les formules suivantes: 
+
+A présent nous calculons la valeur du registre du **temps mort** (Dead Time), pour cela nous utilisons les formules suivantes: 
 
 ![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/temps_mort.png)
 
-T est le temps mort souhaité 
-t represente la periode de notre horloge 
-X est le parametre que l'on modifie dans l'ioc 
-afin d'avoir un temps mort de 2us nous avons trouvé: X= 203. 
+T est le temps mort souhaité: 2 µs (minimum) .
+
+t represente la période de notre horloge (le pas de notre horloge): t=1/f_APB1= 5.88 ns.
+
+X est la valeur du registre Dead Time.
+
+Algorithme: .........
+
+Afin d'avoir un temps mort de 2us nous avons trouvé: X= 203. 
+
 Nous visualisons les quatres signaux PWM afin de verifier le respect du temps mort et nous avons le resultats suivants: 
 
 ![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/dead_time.png)
