@@ -62,8 +62,8 @@ sur la figure ci-dessus nous pouvons voir gràce aux curseurs que le temps mort 
 
 une fois que cette partie a été achevé, nous pouvons à present connecter notre STM32 au hacheur 
 
-| broche hacheur | numéro | Broche STM32 |
-| -------------- | ------ | ------------ |
+| **Nom de la broche (hacheur)** | **Numéro de la broche (hacheur)** | **Broche STM32** |
+| ------------------------------ | --------------------------------- | ---------------- |
 |CMD_B_TOP | 11	| PA8 |
 |CMD_Y_TOP | 12	| PA9 |
 |CMD_B_BOT | 29	| PA11 |
@@ -96,6 +96,9 @@ la multiplication par 12 provient de la datasheet.
 grace à cette formule a pu relever le courant et verifier sa valeur grace notamment à une sonde de courant. 
 
 la vitesse quant a elle a été calculée gràce au codeur present sur les moteurs.
+
+
+Verifier nom broche pour courant ......................
 
 ## Conclusion 
 
