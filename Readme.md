@@ -22,23 +22,27 @@ Temps mort minimum : 2 µs
 Résolution minimum : 10 bits.
 
 ## Configuration du TIMER
-Nous avons configuré le TIMER de la facon suivante: 
-ARR=1061 
-PSC=9
+Nous avons besoin d'une fréquence de 16kHz pour la PWM avec une résolution de 10 bits minimum. 
+
+Avec une ARR à (1024-1) et une fréquence f_APB à 170 MHz, on n'a pas réussi à trouver une bonne valeur de PSC pour avoir 16kHz.
+Donc nous avons opté pour une ARR à (1062-1) et un PSC à (10-1) pour avoir 16,022 kHz qui se rapproche le plus des 16 kHz demandé.
+
 
 ![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/Configuration_timer.png)
 
-Cependant nous avons une valeur de fréquence égale a 16.022 kHz, cette configuration est celle qui se rapproche le plus des 16 kHz demandé. 
+Nous voud
 nous pouvons également voir les channel 1 et 2 qui sont en mode complementaire. 
 à présent nous calculons le temps mort, pour cela nous utilisons les formules suivantes: 
+
 ![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/temps_mort.png)
+
 T est le temps mort souhaité 
 t represente la periode de notre horloge 
 X est le parametre que l'on modifie dans l'ioc 
 afin d'avoir un temps mort de 2us nous avons trouvé: X= 203. 
 Nous visualisons les quatres signaux PWM afin de verifier le respect du temps mort et nous avons le resultats suivants: 
 
-![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/tree/master/images/dead_time.png)
+![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/dead_time.png)
 
 sur la figure ci-dessus nous pouvons voir gràce aux curseurs que le temps mort est respecté ,ce dernier vaut 2,17us ce qui respecte le cahier des charges 
 
