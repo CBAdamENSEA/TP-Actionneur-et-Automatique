@@ -9,7 +9,7 @@ Le but finale étant d'acquerir les données de vitesse et de courant pour asser
 ## Pinout
 Nous avons configuré notre STM32 de la maniere suivante: 
 
-![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/tree/master/images/Pinout.PNG)
+![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/Pinout.PNG)
 
 ## TP1: Commande MCC basique
 
@@ -26,12 +26,12 @@ Nous avons configuré le TIMER de la facon suivante:
 ARR=1061 
 PSC=9
 
-![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/tree/master/images/Configuration_timer.PNG)
+![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/Configuration_timer.PNG)
 
 Cependant nous avons une valeur de fréquence égale a 16.022 kHz, cette configuration est celle qui se rapproche le plus des 16 kHz demandé. 
 nous pouvons également voir les channel 1 et 2 qui sont en mode complementaire. 
 à présent nous calculons le temps mort, pour cela nous utilisons les formules suivantes: 
-![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/tree/master/images/temps_mort.PNG)
+![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/temps_mort.PNG)
 T est le temps mort souhaité 
 t represente la periode de notre horloge 
 X est le parametre que l'on modifie dans l'ioc 
