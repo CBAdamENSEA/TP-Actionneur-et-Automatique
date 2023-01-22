@@ -50,59 +50,86 @@ t represente la période de notre horloge (le pas de notre horloge): t=1/f_APB1=
 
 X est la valeur du registre Dead Time.
 
-Algorithme: .........
+D'abord, on calcule combien de pas de t il nous faut pour arriver à T : Nbre de pas=T/t=340 
 
-Afin d'avoir un temps mort de 2us nous avons trouvé: X= 203. 
+C'est entre 256 et 504 donc: T=(32+X[4..0]))*8*t avec X[7..5]=110(binaire)=192(décimal) 
 
-Nous visualisons les quatres signaux PWM afin de verifier le respect du temps mort et nous avons le resultats suivants: 
+Donc X[4..0]=T/(8*t)-32=11 D'où X[7..0]=11+192=203
+
+Nous visualisons les quatres signaux PWM afin de vérifier le respect du temps mort et nous avons les resultats suivants: 
 
 ![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/dead_time.png)
 
-sur la figure ci-dessus nous pouvons voir gràce aux curseurs que le temps mort est respecté ,ce dernier vaut 2,17us ce qui respecte le cahier des charges 
+Sur la figure ci-dessus nous pouvons voir grâce aux curseurs que le temps mort a été respecté (il vaut 2,17us).
 
-une fois que cette partie a été achevé, nous pouvons à present connecter notre STM32 au hacheur 
+Une fois que cette partie a été achevé, nous pouvons à present connecter notre STM32 au hacheur 
 
 | **Nom de la broche (hacheur)** | **Numéro de la broche (hacheur)** | **Broche STM32** |
 | ------------------------------ | --------------------------------- | ---------------- |
-|CMD_B_TOP | 11	| PA8 |
-|CMD_Y_TOP | 12	| PA9 |
-|CMD_B_BOT | 29	| PA11 |
-|CMD_Y_BOT | 30	| PA12 |
-|ISO_RESET | 33	| PC3 |
-|ISO_GND | 36 | GND |
-|ISO_+5V | 37 | 5V |
+| CMD_B_TOP | 11	| PA8 |
+| CMD_Y_TOP | 12	| PA9 |
+| CMD_B_BOT | 29	| PA11 |
+| CMD_Y_BOT | 30	| PA12 |
+| B_CROSSING | 6 | PA15 |
+| Y_CROSSING | 7 | PA1 |
+| BUS_SHUNT | 3 | PA0 |
+| ISO_RESET | 33	| PC3 |
+| ISO_GND | 36 | GND |
+| ISO_+5V | 37 | 5V |
 
-## Sequence d'allumage 
-la sequence de demarrage correspond a une impulsion que l'on envoie lorsqu'on detecte un appuie sur un bouton poussoir, ce dernier genere une interruption 
-dans cette interruption on envoie la sequence de demarrage qui consiste a mettre un niveau logique 1 en sortie de PC3 puis attendre 2.5 us grace a un timer et remettre cette sortie à 0. 
+## Séquence d'allumage 
+
+La séquence de démarrage correspond à une impulsion de 2us minimum sur le pin ISO_RESET du hacheur. On lance cette séquence
+lorsqu'on detecte un appuie sur un bouton poussoir ou losqu'on reçoie "start" sur le shell.
+
+On active le pin ISO_RESET, on lance le Timer 7 pour compter les 2.5us et désactive le pin ensuite.
 
 
 ## Commande de vitesse et premier test
-Nous recevons l'instruction de vitesse sous la forme speed=XXXX, le traitement consiste a prendre cette valeur et a la convertir en entier puis on donne une
-consigne PWM qui correspond a la valeur de la vitesse. tous d'abord nous avons donné une consigne de 50% le moteur de tourne pas , puis on a donné une valeur de 70%,
-le moteur dans ce cas commence a tourner puis s'arrete ,nous avons donc remarqué que lorsqu'on donne une consigne trop élevé le moteur ne suit pas et s'arrete à 
-cause d'un fort appel de courant,il se met en mode securité et il faut envoyer la sequence d'allumage a nouveau, pour resoudre a ce probleme on a du creer une rampe de pwm qui monte progressivement jusqu'a atteindre la valeur de PWM souhaité 
-on à aussi remarqué que l'on ne peut pas atteindre une valeur PWM de 100 % le moteur s'arrete dans ce cas. 
+Nous recevons l'instruction de vitesse sous la forme "speed=XX" (XX est un pourcentage).
 
-## mesure de vitesse et de courant 
+Le traitement consiste à convertir en entier la valeur de la vitesse, la limiter entre 1 et 99 (RC alpha), 
+l'introduire au Timer (alpha pour le registre CCR1 et 1-alpha pour le registre CCR2) pour changer les rapports cycliques.
 
-Dans cette partie, nous avons utilisé la broche de l'ADC de la STM32 comme entrée de notre courant. 
-dans un premier temps on effectue une calibration afin de relever la valeur d'offset,le calibration se fait à vitesse nulle, le courant doit etre nul lui aussi mais on s'apercoit qu'il a une certaine valeur  
-une fois que nous avons trouvé cette derniere, on calcul le courant de la maniere suivante: 
+D'abord, nous avons donné une consigne de 50% le moteur de tourne pas , puis on a donné une valeur de 70%,
+le moteur dans ce cas commence a tourner puis s'arrete.
 
+Nous avons donc remarqué que lorsqu'on donne une consigne trop élevé le moteur ne suit pas et s'arrete à 
+cause d'un fort appel de courant. Il se met en mode securité et il faut envoyer la séquence d'allumage a nouveau.
+
+Afin de resoudre ce probleme, on a créé une rampe de rapport cyclique de la PWM qui monte progressivement jusqu'a atteindre la valeur souhaitée. 
+Nous avons utilisé l'interruption du Timer 6 afin de réaliser cette rampe.
+On a aussi remarqué que l'on ne peut pas atteindre une valeur PWM de 100 % le moteur s'arrete dans ce cas. 
+
+## Mesure de vitesse et de courant 
+
+Dans cette partie, nous avons utilisé la broche de l'ADC1 de la STM32 comme entrée du retour courant du hacheur.
+ 
+Dans un premier temps on effectue une calibration afin de relever la valeur de l'offset. La calibration se fait à vitesse nulle, 
+Le courant doit être nul lui aussi, donc la tension doit être à 2.5V comme indiqué dans la datasheet. Mais on s'apercoit qu'il a une certaine
+variation.
+
+Une fois que nous avons trouvé cette dernière, on trouve le courant de la manière suivante: 
 current_v=((((adc_value)/4096.0)*3.3)-offset_current)*12;
-4096 etant la résolution 
-la multiplication par 12 provient de la datasheet. 
-grace à cette formule a pu relever le courant et verifier sa valeur grace notamment à une sonde de courant. 
 
-la vitesse quant a elle a été calculée gràce au codeur present sur les moteurs.
+4096 est la valeur max de la tension capté par l'ADC qui correspond à 3.3V.
+ 
+La multiplication par 12 provient de la datasheet: 12A/V. 
+
+Pour lancer la mesure de courant, nous avons utilisé l'interruption du Timer 1 qui gèrent les PWM, afin d'avoir la valeur moyenne du courant.
 
 
-Verifier nom broche pour courant ......................
+Concernant la vitesse, nous l'avons calculé en utilisant le Timer 2 en mode encodeur en le connectant avec les sorties de l'encodeur. 
+
+Le calcul de vitesse se fait dans l'interruption du Timer 8 (donc chaque 100 ms (10Hz)). On récupère la valeur du compteur du Timer 2 (encodeur)
+et on la multiplie par la fréquence d'échantiollonage (10Hz) et on divise par la résolution de l'encodeur: 2048.
+
+A la fin de chaque mesure, on remet le compteur du Timer 2 à 0 pour préparer pour la prochaine mesure.
 
 ## Conclusion 
 
-Ce TP nous a été trés formateur car il nous a permis d'aborder le principe de commande des machines a courant continu, cependant nous n'avons pas eu le temps de réaliser l'asservissement du moteur. 
+Ce TP nous a été trés formateur car il nous a permis d'aborder le principe de commande des machines à courant continu, 
+cependant nous n'avons pas eu le temps de réaliser l'asservissement du moteur. 
 
 
 
@@ -116,5 +143,6 @@ Ce TP nous a été trés formateur car il nous a permis d'aborder le principe de
 Adam CHEIKH BRAHIM
 
 Karim ABDELLAZIZ
+
 Sami ASFARY
 	
