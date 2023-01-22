@@ -140,9 +140,11 @@ cependant nous n'avons pas eu le temps de réaliser l'asservissement du moteur.
 
 ## Authors
 
-Adam CHEIKH BRAHIM
+[Adam CHEIKH BRAHIM](mailto:adam.cheikh-brahim@ensea.fr?subject=[GitHub]%20TP%20Actionneur%20Automatique)
 
-Karim ABDELLAZIZ
+[Karim ABDELLAZIZ](mailto:karim.abdellaziz@ensea.fr?subject=[GitHub]%20TP%20Actionneur%20Automatique)
 
-Sami ASFARY
+[Adam CHEIKH BRAHIM](mailto:adam.cheikh-brahim@ensea.fr?subject=[GitHub]%20TP%20Actionneur%20Automatique)
+
+[Sami ASFARY](mailto:sami.asfary@ensea.fr?subject=[GitHub]%20TP%20Actionneur%20Automatique)
 	
