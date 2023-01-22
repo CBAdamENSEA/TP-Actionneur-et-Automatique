@@ -37,12 +37,12 @@ Avec une ARR à (1024-1) et une fréquence f_APB à 170 MHz, on n'a pas réussi 
 Donc nous avons opté pour une ARR à (1062-1) et un PSC à (10-1) pour avoir une fréquence de 16,022 kHz qui se rapproche le plus des 16 kHz demandé.
 
 
-![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/Configuration_timer.png)
+![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/Configuration_timer_1_60.png)
 
 
 A présent nous calculons la valeur du registre du **temps mort** (Dead Time), pour cela nous utilisons les formules suivantes: 
 
-![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/temps_mort.png)
+![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/temps_mort_50.png)
 
 T est le temps mort souhaité: 2 µs (minimum) .
 
@@ -58,7 +58,7 @@ Donc X[4..0]=T/(8*t)-32=11 D'où X[7..0]=11+192=203
 
 Nous visualisons les quatres signaux PWM afin de vérifier le respect du temps mort et nous avons les resultats suivants: 
 
-![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/dead_time.png)
+![architecture](https://github.com/CBAdamENSEA/TP-Actionneur-et-Automatique/blob/master/images/dead_time_65.png)
 
 Sur la figure ci-dessus nous pouvons voir grâce aux curseurs que le temps mort a été respecté (il vaut 2,17us).
 
